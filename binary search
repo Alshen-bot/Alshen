@@ -1,0 +1,45 @@
+import random
+def genlist():
+    k = []
+    for i in range(0,10):
+        num = random.randrange(0,101,2)
+        k.append(num)
+    print(*k)
+    return k
+    
+def splitter(k,c):
+    l=len(k)
+    mid = int(l/2)
+    if(k[mid]==c):
+        print("Number is present")
+    else:
+        flag = 0
+        for i in range(mid):
+            if k[i]==c:
+                flag = 1
+                continue
+        if flag == 0:
+            for j in range((mid+1),l):
+                if k[j]==c:
+                    flag = 2
+                    continue
+        if flag == 0:
+            print("Sorry, your no is not present")
+        
+            
+        if flag == 1:
+            t = []
+            for j in range(mid):
+                t.append(k[j])
+            splitter(t,c)
+                    
+        elif flag == 2:
+            t = []
+            for j in range((mid+1),l):
+                t.append(k[j])
+            splitter(t,c)
+
+
+k = genlist()
+c = int(input("Please enter the no: "))
+splitter(k,c)
