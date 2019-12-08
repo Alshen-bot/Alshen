@@ -13,7 +13,7 @@ def splitter(k,c):
     if(k[mid]==c):
         print("Number is present")
     else:
-        flag = 0
+        flag = 0                        #Checking to which half does the number belong to
         for i in range(mid):
             if k[i]==c:
                 flag = 1
@@ -23,17 +23,17 @@ def splitter(k,c):
                 if k[j]==c:
                     flag = 2
                     continue
-        if flag == 0:
+        if flag == 0:     #If the number is not present in any of the half, it indicates that the no is not present in the list.
             print("Sorry, your no is not present")
-        
+  
             
-        if flag == 1:
+        if flag == 1:    #If the no belongs to the first half , then export the first half to a temporary list called t[]
             t = []
             for j in range(mid):
                 t.append(k[j])
-            splitter(t,c)
-                    
-        elif flag == 2:
+            splitter(t,c)  #Now call the splitter function with t[] as the input, remember t[] contains only the half of the original list
+                           #This recursive calling will stop, until the "Number is present".
+        elif flag == 2:  #If the no belongs to the second half, then export the second half to a temporary list called t[]
             t = []
             for j in range((mid+1),l):
                 t.append(k[j])
